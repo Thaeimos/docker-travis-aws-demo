@@ -1,0 +1,10 @@
+sudo: required
+language: generic 
+services:
+  - docker
+
+before_install:
+  - docker build -t thaeimos/docker-travis-aws-demo -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true thaeimos/docker-travis-aws-demo npm run test
